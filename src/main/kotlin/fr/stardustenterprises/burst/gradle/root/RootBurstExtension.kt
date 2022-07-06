@@ -1,17 +1,22 @@
 package fr.stardustenterprises.burst.gradle.root
 
+import fr.stardustenterprises.burst.feature.Feature
+import fr.stardustenterprises.burst.feature.FeatureDelegation
+import fr.stardustenterprises.burst.invokeScaffold
+import fr.stardustenterprises.burst.meta.project.ProjectMetadataBuilder
 import fr.stardustenterprises.stargrad.ext.Extension
-import fr.stardustenterprises.stargrad.ext.StargradExtension
 import org.gradle.api.Project
-import org.gradle.api.provider.Property
-import org.gradle.api.tasks.Input
+import org.gradle.api.model.ObjectFactory
+import org.gradle.api.tasks.Internal
 
 @Extension("burst")
-open class RootBurstExtension(project: Project) : StargradExtension(project) {
-    @Input
-    val name: Property<String> = objects.property(String::class.java)
+open class RootBurstExtension(project: Project) {
+    val java by FeatureDelegation(Feature())
 
-    @Input
-    var test: String =
-        "test"
+    @Internal
+    protected val objects: ObjectFactory = project.objects
+
+    val project = invokeScaffold<ProjectMetadataBuilder> {
+
+    }
 }

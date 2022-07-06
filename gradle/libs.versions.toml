@@ -1,14 +1,15 @@
 [versions]
+gradle-plugin-publish = "1.0.0"
 kotlin = "1.7.0"
-gradle-plugin-publish = "0.21.0"
 stargrad = "0.5.2"
+version-catalog-update = "0.5.1"
 
 [libraries]
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin"}
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 stargrad = { module = "fr.stardustenterprises:stargrad", version.ref = "stargrad" }
 
-[bundles]
-
 [plugins]
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 gradle-plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "gradle-plugin-publish" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "version-catalog-update" }
+versions = "com.github.ben-manes.versions:0.42.0"
