@@ -1,8 +1,7 @@
-package fr.stardustenterprises.burst.meta.impl.project
+package fr.stardustenterprises.burst.meta.impl
 
 import fr.stardustenterprises.burst.meta.Data
 import fr.stardustenterprises.burst.meta.impl.pom.PomMetadata
-import fr.stardustenterprises.burst.meta.impl.scm.ScmMetadata
 import fr.stardustenterprises.burst.meta.mutateAndGet
 import fr.stardustenterprises.burst.property.MissingPropertyException
 import fr.stardustenterprises.burst.property.data

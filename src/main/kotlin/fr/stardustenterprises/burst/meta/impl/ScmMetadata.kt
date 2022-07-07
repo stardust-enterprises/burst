@@ -1,7 +1,6 @@
-package fr.stardustenterprises.burst.meta.impl.scm
+package fr.stardustenterprises.burst.meta.impl
 
 import fr.stardustenterprises.burst.meta.Data
-import fr.stardustenterprises.burst.meta.impl.project.ProjectMetadata
 import fr.stardustenterprises.burst.property.data
 
 class ScmMetadata : Data<ProjectMetadata>() {

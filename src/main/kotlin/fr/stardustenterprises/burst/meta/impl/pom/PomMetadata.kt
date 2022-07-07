@@ -1,7 +1,7 @@
 package fr.stardustenterprises.burst.meta.impl.pom
 
 import fr.stardustenterprises.burst.meta.Data
-import fr.stardustenterprises.burst.meta.impl.project.ProjectMetadata
+import fr.stardustenterprises.burst.meta.impl.ProjectMetadata
 import fr.stardustenterprises.burst.meta.mutateAndGet
 
 /**

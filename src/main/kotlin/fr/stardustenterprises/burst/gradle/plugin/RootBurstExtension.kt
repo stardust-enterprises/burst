@@ -1,7 +1,7 @@
 package fr.stardustenterprises.burst.gradle.plugin
 
 import fr.stardustenterprises.burst.burstRegistry
-import fr.stardustenterprises.burst.meta.impl.project.ProjectMetadata
+import fr.stardustenterprises.burst.meta.impl.ProjectMetadata
 import fr.stardustenterprises.burst.meta.mutateAndGet
 import fr.stardustenterprises.stargrad.ext.Extension
 import fr.stardustenterprises.stargrad.ext.StargradExtension
