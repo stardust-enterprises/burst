@@ -6,4 +6,3 @@ pluginManagement.repositories {
     mavenCentral()
 }
 
-enableFeaturePreview("VERSION_CATALOGS")

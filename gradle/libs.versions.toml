@@ -6,7 +6,11 @@ version-catalog-update = "0.5.1"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 stargrad = { module = "fr.stardustenterprises:stargrad", version.ref = "stargrad" }
+
+[bundles]
+kotlin = ["kotlin-stdlib", "kotlin-reflect"]
 
 [plugins]
 gradle-plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "gradle-plugin-publish" }

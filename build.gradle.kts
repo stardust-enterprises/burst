@@ -20,8 +20,26 @@ repositories {
 dependencies {
     compileOnly(gradleApi())
 
-    implementation(libs.kotlin.stdlib)
+    implementation(libs.bundles.kotlin)
     implementation(libs.stargrad)
+}
+
+sourceSets {
+    val main by sourceSets
+    val test by sourceSets
+
+    val api by creating {
+        java.srcDir("src/$name/kotlin")
+        resources.srcDir("src/$name/resources")
+
+        this.compileClasspath += main.compileClasspath
+        this.runtimeClasspath += main.runtimeClasspath
+    }
+
+    arrayOf(main, test).forEach {
+        it.compileClasspath += api.output
+        it.runtimeClasspath += api.output
+    }
 }
 
 tasks {
@@ -31,6 +49,9 @@ tasks {
     compileKotlin {
         kotlinOptions.jvmTarget = jvmTarget
         kotlinOptions.languageVersion = "1.7"
+        kotlinOptions.freeCompilerArgs += listOf(
+            "-opt-in=kotlin.RequiresOptIn"
+        )
     }
     compileJava {
         targetCompatibility = jvmTarget
@@ -44,7 +65,7 @@ gradlePlugin {
             displayName = "Burst - root"
             description = "Missing."
             id = "fr.stardustenterprises.burst.root"
-            implementationClass = "fr.stardustenterprises.burst.gradle.root.RootPlugin"
+            implementationClass = "fr.stardustenterprises.burst.gradle.plugin.RootPlugin"
         }
     }
 }
