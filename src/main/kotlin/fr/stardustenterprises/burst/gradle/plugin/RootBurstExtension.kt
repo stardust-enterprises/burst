@@ -1,6 +1,7 @@
 package fr.stardustenterprises.burst.gradle.plugin
 
 import fr.stardustenterprises.burst.burstRegistry
+import fr.stardustenterprises.burst.feature.FeatureRootRegistry
 import fr.stardustenterprises.burst.meta.impl.ProjectMetadata
 import fr.stardustenterprises.burst.meta.mutateAndGet
 import fr.stardustenterprises.stargrad.ext.Extension
@@ -17,7 +18,7 @@ import org.gradle.api.Project
 open class RootBurstExtension(project: Project) : StargradExtension(project) {
     init {
         project.burstRegistry["project.metadata"] = ProjectMetadata()
-//        project.burstRegistry["features"] = FeatureRegistry()
+        project.burstRegistry["features"] = FeatureRootRegistry()
     }
 
     fun project(block: ProjectMetadata.() -> Unit): ProjectMetadata =
@@ -25,10 +26,8 @@ open class RootBurstExtension(project: Project) : StargradExtension(project) {
             .apply(block)
             .mutateAndGet(project)
 
-    //TODO: features block
-//    fun features(block: FeatureData.() -> Unit): Unit =
-//        FeatureData()
-//            .apply(block)
-//            .build()
-//            .applyTo(project)
+    fun features(block: FeatureRootRegistry.() -> Unit): FeatureRootRegistry =
+        (project.burstRegistry["features"]!! as FeatureRootRegistry)
+            .apply(block)
+            .mutateAndGet(project)
 }
