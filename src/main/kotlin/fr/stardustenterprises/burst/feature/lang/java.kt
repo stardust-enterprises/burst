@@ -34,8 +34,3 @@ class JavaFeature: Feature() {
         }
     }
 }
-
-inline fun FeatureRootRegistry.java(crossinline block: JavaFeature.() -> Unit) =
-    JavaFeature()
-        .apply(block)
-        .apply(this.features::add)
