@@ -20,14 +20,14 @@ open class RootBurstExtension(project: Project) : StargradExtension(project) {
         project.burstRegistry["project.metadata"] = ProjectMetadata()
         project.burstRegistry["features"] = FeatureRootRegistry()
     }
+
+    inline fun Project.project(crossinline block: ProjectMetadata.() -> Unit): ProjectMetadata =
+        (this.burstRegistry["project.metadata"]!! as ProjectMetadata)
+            .apply(block)
+            .mutateAndGet(this)
+
+    inline fun Project.features(crossinline block: FeatureRootRegistry.() -> Unit): FeatureRootRegistry =
+        (this.burstRegistry["features"]!! as FeatureRootRegistry)
+            .apply(block)
+            .mutateAndGet(this)
 }
-
-inline fun Project.project(crossinline block: ProjectMetadata.() -> Unit): ProjectMetadata =
-    (this.burstRegistry["project.metadata"]!! as ProjectMetadata)
-        .apply(block)
-        .mutateAndGet(this)
-
-inline fun Project.features(crossinline block: FeatureRootRegistry.() -> Unit): FeatureRootRegistry =
-    (this.burstRegistry["features"]!! as FeatureRootRegistry)
-        .apply(block)
-        .mutateAndGet(this)
