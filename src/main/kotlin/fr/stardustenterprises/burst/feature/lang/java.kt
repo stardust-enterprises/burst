@@ -11,23 +11,22 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
 class JavaFeature: Feature() {
-
-    val version by data() { JavaVersion.VERSION_1_8 }
-    val javadoc by data { false }
-    val sources by data { false }
+    var version by data() { "1.8" }
+    var javadoc by data { true }
+    var sources by data { true }
 
     override fun mutate(target: Project) {
         target.apply<JavaLibraryPlugin>()
         target.configure<JavaPluginExtension> {
-            targetCompatibility = version!!
-            sourceCompatibility = version!!
+            targetCompatibility = JavaVersion.toVersion(version!!)
+            sourceCompatibility = JavaVersion.toVersion(version!!)
             if(javadoc!!) withJavadocJar()
             if(sources!!) withSourcesJar()
         }
     }
-
 }
 
-inline fun FeatureRootRegistry.java(crossinline block: JavaFeature.() -> Unit) {
-    features += JavaFeature().apply(block)
-}
+inline fun FeatureRootRegistry.java(crossinline block: JavaFeature.() -> Unit) =
+    JavaFeature()
+        .apply(block)
+        .apply(this.features::add)

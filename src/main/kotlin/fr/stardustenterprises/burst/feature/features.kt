@@ -6,8 +6,7 @@ import org.gradle.api.Project
 abstract class Feature: Data<Project>()
 
 class FeatureRootRegistry: Data<Project>() {
-
-    val features = mutableListOf<Feature>()
+    val features: MutableList<Feature> = mutableListOf()
 
     override fun mutate(target: Project) {
         features.forEach { f -> f.mutate(target) }
