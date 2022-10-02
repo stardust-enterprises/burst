@@ -28,6 +28,7 @@ class KotlinFeature: Feature() {
     }
 }
 
-inline fun FeatureRootRegistry.kotlin(crossinline block: KotlinFeature.() -> Unit) {
-    features += KotlinFeature().apply(block)
-}
+inline fun FeatureRootRegistry.kotlin(crossinline block: KotlinFeature.() -> Unit) =
+    KotlinFeature()
+        .apply(block)
+        .apply(this.features::add)
