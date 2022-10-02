@@ -9,6 +9,8 @@ class FeatureRootRegistry: Data<Project>() {
     val features: MutableList<Feature> = mutableListOf()
 
     override fun mutate(target: Project) {
-        features.forEach { f -> f.mutate(target) }
+        features
+            .toList()
+            .forEach { f -> f.mutate(target) }
     }
 }
