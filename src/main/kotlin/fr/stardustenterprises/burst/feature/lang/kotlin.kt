@@ -12,6 +12,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinPluginWrapper
 
 class KotlinFeature: Feature() {
+    var javaVersion by data() { JavaLanguageVersion.of(8) }
     var jvmArgs by data<List<String>>() { emptyList() }
 
     override fun mutate(target: Project) {
@@ -23,7 +24,7 @@ class KotlinFeature: Feature() {
         target.apply<KotlinPluginWrapper>()
         target.configure<KotlinJvmProjectExtension>() {
             jvmToolchain {
-                languageVersion.set(javaFeature.javaVersion!!)
+                languageVersion.set(javaVersion)
             }
             kotlinDaemonJvmArgs = jvmArgs!!
         }
