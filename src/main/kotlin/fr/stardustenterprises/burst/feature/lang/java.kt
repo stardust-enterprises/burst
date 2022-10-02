@@ -1,7 +1,6 @@
 package fr.stardustenterprises.burst.feature.lang
 
 import fr.stardustenterprises.burst.feature.Feature
-import fr.stardustenterprises.burst.feature.FeatureRootRegistry
 import fr.stardustenterprises.burst.property.data
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaLibraryPlugin
@@ -11,7 +10,7 @@ import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
 class JavaFeature: Feature() {
-    var javaVersion by data() { JavaLanguageVersion.of(8) }
+    var jvmVersion by data() { JavaLanguageVersion.of(8) }
     private var javadoc by data { true }
     private var sources by data { true }
 
@@ -29,7 +28,7 @@ class JavaFeature: Feature() {
             if(javadoc!!) withJavadocJar()
             if(sources!!) withSourcesJar()
             toolchain {
-                languageVersion.set(javaVersion)
+                languageVersion.set(jvmVersion)
             }
         }
     }
