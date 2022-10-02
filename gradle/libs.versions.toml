@@ -1,6 +1,6 @@
 [versions]
 gradle-plugin-publish = "1.0.0"
-kotlin = "1.7.0"
+kotlin = "1.7.20"
 stargrad = "0.5.2"
 version-catalog-update = "0.5.1"
 

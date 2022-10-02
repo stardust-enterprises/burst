@@ -15,6 +15,7 @@ class RootPlugin : StargradPlugin() {
     lateinit var rootExtension: RootBurstExtension
 
     override fun applyPlugin() {
+        // TODO: Maybe remove this..? Seems like the plugin should not do this
         project.repositories {
             mavenCentral()
             gradlePluginPortal()
