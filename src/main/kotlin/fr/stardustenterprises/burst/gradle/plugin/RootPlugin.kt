@@ -1,8 +1,11 @@
 package fr.stardustenterprises.burst.gradle.plugin
 
 import fr.stardustenterprises.stargrad.StargradPlugin
+import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
+import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.maven
 import org.gradle.kotlin.dsl.repositories
+import org.gradle.plugins.signing.SigningPlugin
 
 /**
  * Burst's entrypoint plugin.
@@ -15,6 +18,10 @@ class RootPlugin : StargradPlugin() {
     lateinit var rootExtension: RootBurstExtension
 
     override fun applyPlugin() {
+        project.apply<MavenPublishPlugin>()
+        project.apply<SigningPlugin>()
+
+        // TODO: Maybe remove this..? Seems like the plugin should not do this
         project.repositories {
             mavenCentral()
             gradlePluginPortal()
