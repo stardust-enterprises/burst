@@ -1,6 +1,6 @@
-package fr.stardustenterprises.burst.gradle.plugin
+package enterprises.stardust.burst.gradle.plugin
 
-import fr.stardustenterprises.stargrad.StargradPlugin
+import enterprises.stardust.stargrad.StargradPlugin
 import org.gradle.api.publish.maven.plugins.MavenPublishPlugin
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.maven

@@ -1,7 +1,7 @@
-package fr.stardustenterprises.burst.meta.impl.pom
+package enterprises.stardust.burst.meta.impl.pom
 
-import fr.stardustenterprises.burst.meta.Data
-import fr.stardustenterprises.burst.property.data
+import enterprises.stardust.burst.meta.Data
+import enterprises.stardust.burst.property.data
 import org.gradle.kotlin.dsl.provideDelegate
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty

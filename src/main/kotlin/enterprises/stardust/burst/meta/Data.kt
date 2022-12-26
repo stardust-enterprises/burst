@@ -1,4 +1,4 @@
-package fr.stardustenterprises.burst.meta
+package enterprises.stardust.burst.meta
 
 /**
  * An abstract representation of applicable metadata.

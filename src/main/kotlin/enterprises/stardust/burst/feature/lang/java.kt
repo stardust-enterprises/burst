@@ -1,7 +1,8 @@
-package fr.stardustenterprises.burst.feature.lang
+package enterprises.stardust.burst.feature.lang
 
-import fr.stardustenterprises.burst.feature.Feature
-import fr.stardustenterprises.burst.property.data
+import enterprises.stardust.burst.feature.Feature
+import enterprises.stardust.burst.property.data
+import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.JavaLibraryPlugin
 import org.gradle.api.plugins.JavaPluginExtension
@@ -9,10 +10,12 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.configure
 
-class JavaFeature: Feature() {
-    var jvmVersion by data() { JavaLanguageVersion.of(8) }
-    private var javadoc by data { true }
-    private var sources by data { true }
+class JavaFeature : Feature() {
+    var jvmVersion by data {
+        JavaLanguageVersion.of(JavaVersion.current().majorVersion)
+    }
+    var javadoc by data { false }
+    var sources by data { false }
 
     fun javadoc() {
         javadoc = true
@@ -24,9 +27,11 @@ class JavaFeature: Feature() {
 
     override fun mutate(target: Project) {
         target.apply<JavaLibraryPlugin>()
+
         target.configure<JavaPluginExtension> {
-            if(javadoc!!) withJavadocJar()
-            if(sources!!) withSourcesJar()
+            if (javadoc!!) withJavadocJar()
+            if (sources!!) withSourcesJar()
+
             toolchain {
                 languageVersion.set(jvmVersion)
             }

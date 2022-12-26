@@ -1,4 +1,4 @@
-package fr.stardustenterprises.burst.property
+package enterprises.stardust.burst.property
 
 import kotlin.reflect.KProperty
 import kotlin.reflect.javaType

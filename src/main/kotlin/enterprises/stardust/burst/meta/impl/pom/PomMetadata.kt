@@ -1,8 +1,8 @@
-package fr.stardustenterprises.burst.meta.impl.pom
+package enterprises.stardust.burst.meta.impl.pom
 
-import fr.stardustenterprises.burst.meta.Data
-import fr.stardustenterprises.burst.meta.impl.ProjectMetadata
-import fr.stardustenterprises.burst.meta.mutateAndGet
+import enterprises.stardust.burst.meta.Data
+import enterprises.stardust.burst.meta.impl.ProjectMetadata
+import enterprises.stardust.burst.meta.mutateAndGet
 
 /**
  * @author xtrm

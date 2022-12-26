@@ -1,4 +1,4 @@
-package fr.stardustenterprises.burst
+package enterprises.stardust.burst
 
 import org.gradle.api.Project
 

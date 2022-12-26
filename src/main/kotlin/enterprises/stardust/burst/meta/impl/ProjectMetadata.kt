@@ -1,10 +1,10 @@
-package fr.stardustenterprises.burst.meta.impl
+package enterprises.stardust.burst.meta.impl
 
-import fr.stardustenterprises.burst.meta.Data
-import fr.stardustenterprises.burst.meta.impl.pom.PomMetadata
-import fr.stardustenterprises.burst.meta.mutateAndGet
-import fr.stardustenterprises.burst.property.MissingPropertyException
-import fr.stardustenterprises.burst.property.data
+import enterprises.stardust.burst.meta.Data
+import enterprises.stardust.burst.meta.impl.pom.PomMetadata
+import enterprises.stardust.burst.meta.mutateAndGet
+import enterprises.stardust.burst.property.MissingPropertyException
+import enterprises.stardust.burst.property.data
 import org.gradle.api.Project
 
 /**

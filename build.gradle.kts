@@ -10,8 +10,8 @@ plugins {
     alias(libs.plugins.version.catalog.update)
 }
 
-group = "fr.stardustenterprises"
-version = "4.0.0"
+group = "enterprises.stardust"
+version = "4.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -24,21 +24,11 @@ dependencies {
     implementation(libs.stargrad)
 }
 
-sourceSets {
-    val main by sourceSets
-    val test by sourceSets
-
-    val api by creating {
-        java.srcDir("src/$name/kotlin")
-        resources.srcDir("src/$name/resources")
-
-        this.compileClasspath += main.compileClasspath
-        this.runtimeClasspath += main.runtimeClasspath
-    }
-
-    arrayOf(main, test).forEach {
-        it.compileClasspath += api.output
-        it.runtimeClasspath += api.output
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin") {
+            useVersion(libs.kotlin.jvm.get().versionConstraint.displayName)
+        }
     }
 }
 
@@ -64,8 +54,8 @@ gradlePlugin {
         create("burstRoot") {
             displayName = "Burst - root"
             description = "Missing."
-            id = "fr.stardustenterprises.burst.root"
-            implementationClass = "fr.stardustenterprises.burst.gradle.plugin.RootPlugin"
+            id = "enterprises.stardust.burst.root"
+            implementationClass = "enterprises.stardust.burst.gradle.plugin.RootPlugin"
         }
     }
 }
@@ -75,5 +65,3 @@ pluginBundle {
     website = "https://github.com/stardust-enterprises/burst"
     tags = listOf()
 }
-
-fun plugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
